@@ -21,8 +21,8 @@
                 <p class="card-text">@o.IndirizzoSpedizione</p>
                 <p class="card-text">@o.Note</p>
                 <p class="card-text">@o.ImportoTotale</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <a @Html.ActionLink("Completa l'ordine", "", "", new { area = "" }, new { @class = "nav-link" })/>
+                <a @Html.ActionLink("Aggiungi altre pizze", "Index", "Dettagli", new { id = o.IdOrdine }, new { @class = "nav-link" })
             </div>
         </div>
         }

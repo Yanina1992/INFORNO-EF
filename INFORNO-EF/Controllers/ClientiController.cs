@@ -42,8 +42,7 @@ namespace INFORNO_EF.Controllers
         }
         public ActionResult Create() 
         {
-            string FKPizza = TempData["FKPizza"] as string;
-            string FKUtente = TempData["FKUtente"] as string;
+
             return View();
         }
 
