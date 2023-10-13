@@ -31,10 +31,14 @@ namespace INFORNO_EF.Controllers
             }
 
             //var trovaUtente = db.Utenti.Where(m => m.);
-            var trovaUtente = db.Utenti.Select(m => new { m.Username, m.IdUtente, m.Ordini}).Where(m => m.Username == nomeCliente);
-            //var trovaOrdine = db.Ordini.Select(m=>new {m.FKUtente}).Where(m=>m.FKUtente==trovaUtente)
+            //var trovaUtente = db.Utenti.Select(m => new { m.Username, m.IdUtente, m.Ordini}).Where(m => m.Username == nomeCliente);
+            var trovaUtente = db.Utenti.Where(m => m.Username == nomeCliente).FirstOrDefault();
+            var trovaOrdini= trovaUtente.Ordini.ToList();
             
-            return View();
+            //var trovaId = db.Utenti.Select(m=> new {m.IdUtente}).Where
+            //var trovaOrdine = db.Ordini.Select(m => new { m.FKUtente }).Where(m => m.FKUtente == trovaUtente.);
+            
+            return View(trovaOrdini);
         }
         public ActionResult Create() 
         {
