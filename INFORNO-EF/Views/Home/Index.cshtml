@@ -1,0 +1,23 @@
+﻿@model IEnumerable<INFORNO_EF.Models.Pizze>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-light">Le nostre pizze</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col col-4 card" style=" background-color: transparent; color: white;">
+                <img src="~/Content/Immagini/@item.Foto" class="card-img-top h-75 p-2" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Nome</h5>
+                    <p class="card-text"><strong>@item.Prezzo</strong></p>
+                    <a @Html.ActionLink("Scopri di più", "Details", "Home", new { id=item.IdPizza }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        }
+    </div>
+</div>

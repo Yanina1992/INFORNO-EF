@@ -1,0 +1,30 @@
+﻿@model string
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <h1 class="text-light">@ViewBag.nomeCliente,</h1>
+</div>
+<h2 class="text-light">ecco i tuoi ordini</h2>
+
+<div class="container">
+    <div class="row">
+
+
+        @*<div class="card" style="">
+            <div class="card-body">
+                <h5 class="card-title">Numero ordine @Model.Ordini</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Numero utente</h6>
+                <p class="card-text"> </p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>*@
+
+        <div>
+            <p class="text-light">@ViewBag.ordine</p>
+        </div>
+
+    </div>
+</div>

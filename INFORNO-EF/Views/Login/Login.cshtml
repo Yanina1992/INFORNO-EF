@@ -1,0 +1,46 @@
+﻿@model INFORNO_EF.Models.Utenti
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h1 class="text-center">Login</h1>
+<div class="d-flex justify-content-center flex-column align-items-center">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="d-flex flex-column align-items-center">
+            <h3>Inserisci i username e password per accedere</h3>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group form-control text-center w-75">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBox("Username")
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group form-control text-center w-75">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBox("Password")
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="text-center">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+
+        </div>
+    }
+    <p>Non sei ancora registrato?</p>
+    <a> <strong> @Html.ActionLink("Registrati", "Registrati", "Login", new { area = "" }, new { @class = "nav-link" })</strong></a>
+</div>
+
+@if (ViewBag.AuthError != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.AuthError
+    </div>
+}
