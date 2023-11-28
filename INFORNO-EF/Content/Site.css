@@ -11,3 +11,29 @@ select,
 textarea {
     max-width: 280px;
 }
+
+html {
+    height: 100%;
+}
+
+body {
+    color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+    background-image: url('immagini/istockphoto-177807692-612x612.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, p{
+    color: white;
+    background-color: black;
+}
+
+#above {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}

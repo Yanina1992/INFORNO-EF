@@ -1,101 +1,101 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - Applicazione ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <style>
-        html{
-            height:100%;
-        }
-        body {
-            color: white;
-            background-position: center;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-color: black;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
-<body style="background-image: url('https://images7.alphacoders.com/928/928507.jpg')">
+<body>
 
-    @if (User.IsInRole("admin"))
-    {
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-            <div class="container">
-                @Html.ActionLink("In Forno", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Aggiungi Pizza", "Create", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
-                    </ul>
+    <div id="above">
+        <div>
+            @*Logo*@
+            <svg width="248.1700119018555" height="55.94454731782135" viewBox="0 0 369.66666666666663 83.33333333333333" class="looka-1j8o68f"><defs id="SvgjsDefs1309"><linearGradient id="SvgjsLinearGradient1314"><stop id="SvgjsStop1315" stop-color="#ef4136" offset="0"></stop><stop id="SvgjsStop1316" stop-color="#fbb040" offset="1"></stop></linearGradient><linearGradient id="SvgjsLinearGradient1317"><stop id="SvgjsStop1318" stop-color="#ef4136" offset="0"></stop><stop id="SvgjsStop1319" stop-color="#fbb040" offset="1"></stop></linearGradient></defs><g id="SvgjsG1310" featurekey="symbolFeature-0" transform="matrix(1.0352223930532938,0,0,1.0352223930532938,-7.506397496997293,-7.506397496997293)" fill="url(#SvgjsLinearGradient1314)"><g xmlns="http://www.w3.org/2000/svg"><path d="M47.5,7.251C25.271,7.251,7.251,25.271,7.251,47.5c0,16.501,9.935,30.676,24.145,36.889l20.888-36.178   c-2.524-2.687-3.28-6.449-1.582-9.392l10.473-18.14l2.156,1.246l-9.993,17.308c-0.405,0.703-0.165,1.602,0.538,2.007   c0.703,0.405,1.601,0.163,2.006-0.536l9.993-17.311l1.881,1.086l-9.993,17.31c-0.406,0.702-0.166,1.599,0.537,2.006   c0.703,0.405,1.601,0.163,2.006-0.538l9.994-17.309l1.88,1.086l-9.993,17.31c-0.405,0.7-0.165,1.6,0.538,2.006   c0.702,0.404,1.601,0.163,2.006-0.538l9.993-17.309l2.156,1.244L66.407,47.886c-1.699,2.943-5.335,4.168-8.925,3.327l-20.317,35.19   c3.299,0.874,6.761,1.346,10.335,1.346c3.275,0,6.455-0.4,9.503-1.139l-9.307-15.706l3.621-6.272L62.901,84.69   c14.586-6.047,24.848-20.418,24.848-37.19C87.749,25.271,69.729,7.251,47.5,7.251z M42.582,62.274l-1.646-2.776l-4.908,2.834   c0,0-19.563-36.184-10.091-41.652l20.332,35.208L42.582,62.274z"></path></g></g><g id="SvgjsG1311" featurekey="nameFeature-0" transform="matrix(1.6119655779823643,0,0,1.6119655779823643,99.15900825598612,0.046506594175443894)" fill="url(#SvgjsLinearGradient1317)"><path d="M6.6211 12.09 l-4.2383 0 l0 27.91 l4.2383 0 l0 -27.91 z M27.34425 12.050999999999998 l0 19.98 l-11.934 -19.98 l-4.4336 0 l0 27.949 l4.2383 0 l0 -19.98 l11.953 19.98 l4.4336 0 l0 -27.949 l-4.2578 0 z M45.93755 12.050999999999998 l0 27.949 l4.2383 0 l0 -11.895 l7.7344 0 l0 -4.2383 l-7.7344 0 l0 -7.5781 l10.02 0 l0 -4.2383 l-14.258 0 z M69.2969 18.945 c-1.9531 1.9531 -2.9297 4.31 -2.9297 7.0703 s0.97656 5.1172 2.9297 7.0703 s4.31 2.9297 7.0703 2.9297 s5.1172 -0.97656 7.0703 -2.9297 s2.9297 -4.31 2.9297 -7.0703 s-0.97656 -5.1172 -2.9297 -7.0703 s-4.31 -2.9297 -7.0703 -2.9297 s-5.1172 0.97656 -7.0703 2.9297 z M66.2891 36.0937 c-2.7865 -2.7865 -4.1797 -6.1459 -4.1797 -10.078 s1.3932 -7.2916 4.1797 -10.078 s6.1459 -4.1797 10.078 -4.1797 s7.2916 1.3932 10.078 4.1797 s4.1797 6.1459 4.1797 10.078 s-1.3932 7.2916 -4.1797 10.078 s-6.1459 4.1797 -10.078 4.1797 s-7.2916 -1.3932 -10.078 -4.1797 z M97.9297 23.984 l0 -7.6953 l6.0742 0 c1.0547 0 1.9596 0.3776 2.7148 1.1328 c0.74219 0.75521 1.1133 1.6667 1.1133 2.7344 c0 1.0547 -0.37109 1.9531 -1.1133 2.6953 c-0.75521 0.75521 -1.6602 1.1328 -2.7148 1.1328 l-6.0742 0 z M107.1675 27.578 c1.4583 -0.625 2.6367 -1.6015 3.5352 -2.9297 c0.92447 -1.3542 1.3867 -2.8516 1.3867 -4.4922 c0 -2.2396 -0.79428 -4.1471 -2.3828 -5.7227 c-1.5755 -1.5885 -3.4766 -2.3828 -5.7031 -2.3828 l-10.313 0 l0 27.949 l4.2383 0 l0 -11.777 l4.7852 0 l6.1133 11.777 l4.7852 0 z M132.109875 12.050999999999998 l0 19.98 l-11.934 -19.98 l-4.4336 0 l0 27.949 l4.2383 0 l0 -19.98 l11.953 19.98 l4.4336 0 l0 -27.949 l-4.2578 0 z M146.4844 18.945 c-1.9531 1.9531 -2.9297 4.31 -2.9297 7.0703 s0.97656 5.1172 2.9297 7.0703 s4.31 2.9297 7.0703 2.9297 s5.1172 -0.97656 7.0703 -2.9297 s2.9297 -4.31 2.9297 -7.0703 s-0.97656 -5.1172 -2.9297 -7.0703 s-4.31 -2.9297 -7.0703 -2.9297 s-5.1172 0.97656 -7.0703 2.9297 z M143.4766 36.0937 c-2.7865 -2.7865 -4.1797 -6.1459 -4.1797 -10.078 s1.3932 -7.2916 4.1797 -10.078 s6.1459 -4.1797 10.078 -4.1797 s7.2916 1.3932 10.078 4.1797 s4.1797 6.1459 4.1797 10.078 s-1.3932 7.2916 -4.1797 10.078 s-6.1459 4.1797 -10.078 4.1797 s-7.2916 -1.3932 -10.078 -4.1797 z"></path></g></svg>
+        </div>
+
+        @*Navbar changes depending on the kind of user*@
+        @if (User.IsInRole("admin"))
+        {
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+                <div class="container">
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Aggiungi Pizza", "Create", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li class="m-2 d-flex align-items-center flex-grow-1 justify-content-end">
+                                <a href="/../Login/Logout" class="nav-link">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                    <i class="bi bi-person-fill-check text-light">@Html.ActionLink("Login", "Login", "Login")</i>
+            </nav>
+        }
+        else if (User.IsInRole("user"))
+        {
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+                <div class="container">
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Carrello", "Index", "Clienti", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li class="m-2 d-flex align-items-center flex-grow-1 justify-content-end">
+                                <a href="/../Login/Logout" class="nav-link">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    }
-    else if (User.IsInRole("user"))
-    {
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-            <div class="container">
-                @Html.ActionLink("In Forno", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Carrello", "Index", "Clienti", new { area = "" }, new { @class = "nav-link" })</li>
-                    </ul>
+            </nav>
+        }
+        else
+        {
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+                <div class="container">
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li class="m-2 d-flex align-items-center flex-grow-1 justify-content-end">
+                                <a href="/../Login/Login" class="nav-link">Login</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                    <i class="bi bi-person-fill-check text-light">@Html.ActionLink("Login", "Login", "Login")</i>
-                </div>
-            </div>
-        </nav>
-    }
-    else
-    {
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-            <div class="container">
-                @Html.ActionLink("In Forno", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Login", "Login", "Login", new { area = "" }, new { @class = "nav-link" })</li>
-                    </ul>
-                </div>
-                <div>
-                    <i class="bi bi-person-fill-x text-light"></i>
-                </div>
-            </div>
-        </nav>
-    }
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
-        </footer>
+            </nav>
+        }
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryval")
-    @RenderSection("scripts", required: false)
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+
+            <footer>
+                <p class="text-center">
+                    &copy; @DateTime.Now.Year - Applicazione ASP.NET - Yanina Anahí Agüero
+                    <a href="https://www.linkedin.com/in/yanina-anahi-aguero-full-stack-developer/"><i class="fa-brands fa-linkedin-in ps-4"></i></a>
+                    <a href="https://github.com/Yanina1992"><i class="fa-brands fa-github"></i></a>
+                </p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryval")
+        @RenderSection("scripts", required: false)
 </body>
         </html>

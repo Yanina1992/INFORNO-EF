@@ -4,18 +4,21 @@
     ViewBag.Title = "Details";
 }
 
-<h1>@Model.Nome</h1>
+<h1 class="bg-dark opacity-75 text-center">@Model.Nome</h1>
 
 
     <div class="card text-bg-dark">
         <img src="~/Content/Immagini/@Model.Foto" class="card-img" alt="...">
         <div class="card-img-overlay">
-            <h5 class="card-title mt-4 text-dark"><strong>@Model.Nome</strong></h5>
-            <p class="card-text text-dark"><strong>@Model.Ingredienti</strong></p>
-            <p class="card-text text-dark"><strong>@Model.Prezzo</strong></p>
-            <p class="card-text text-dark"><strong>@Model.TempoConsegna</strong></p>
-            <div class="form-group">
-                <a @Html.ActionLink("Aggiungi al carrello", "Create", "Home", new { id=Model.IdPizza }, new { @class = "btn btn-primary" })
+            <div class="text-light bg-dark opacity-75 text-center text p-4">
+                <h5 class="card-title mt-4"><strong>@Model.Nome</strong></h5>
+                <p class="card-text"><strong>@Model.Ingredienti</strong></p>
+                <p class="card-text"><strong>@Model.Prezzo€</strong></p>
+                <p class="card-text"><strong>@Model.TempoConsegna</strong></p>
+                <div class="form-group">
+                    <a @Html.ActionLink("Aggiungi al carrello", "Create", "Home", new { id = Model.IdPizza }, new { @class = "btn btn-light" })
+                </div>
             </div>
+        
         </div>
     </div>
