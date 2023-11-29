@@ -1,24 +1,45 @@
-﻿@model IEnumerable<INFORNO_EF.Models.Pizze>
+﻿@model IEnumerable<INFORNO_EF.Models.Dettagli>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2 class="text-light">Le nostre pizze</h2>
+<h2>Index</h2>
 
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col col-4 card" style=" background-color: transparent; color: white;">
-                <img src="~/Content/Immagini/@item.Foto" class="card-img-top h-75 p-2" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">@item.Nome</h5>
-                    <p class="card-text"><strong>@item.Prezzo</strong></p>
-                    <a @Html.ActionLink("Aggiungi all'ordine", "Create", "Dettagli", new { id = item.IdPizza }, new { @class = "btn btn-primary" })
-                </div>
-            </div>
-        }
-    </div>
-</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ordini.IndirizzoSpedizione)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pizze.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantita)
+        </th>
+        <th></th>
+    </tr>
 
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ordini.IndirizzoSpedizione)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pizze.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantita)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdDettaglio }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdDettaglio }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdDettaglio })
+        </td>
+    </tr>
+}
+
+</table>

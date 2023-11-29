@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@item.Nome</h5>
                     <p class="card-text"><strong>@item.Prezzo</strong></p>
-                    <a @Html.ActionLink("Scopri di più", "Details", "Home", new { id=item.IdPizza }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Scopri di più", "Details", "Home", new { id = item.IdPizza }, new { @class = "btn btn-primary" })
                 </div>
             </div>
         }

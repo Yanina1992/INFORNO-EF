@@ -1,0 +1,74 @@
+﻿@model INFORNO_EF.Models.Ordini
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ordini</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Utenti.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Utenti.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IndirizzoSpedizione)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IndirizzoSpedizione)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImportoTotale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImportoTotale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Concluso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Concluso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Evaso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evaso)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdOrdine }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

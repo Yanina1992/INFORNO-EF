@@ -22,7 +22,6 @@ namespace INFORNO_EF.Controllers
 
             return View(db.Pizze.ToList());
         }
-
         
         public ActionResult Details(int? id)
         {
@@ -36,38 +35,6 @@ namespace INFORNO_EF.Controllers
                 return HttpNotFound();
             }
             return View(pizza);
-        }
-        
-        public ActionResult Create(int id) 
-        {
-
-         return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(Ordini ordine, int id, DateTime Data, string IndirizzoSpedizione, string note, bool Concluso, string NomeCliente, int quantita) 
-        {
-            if (ModelState.IsValid)
-            {
-                Utenti utente = db.Utenti.Where(u => u.Username == NomeCliente).FirstOrDefault();
-                int fkUt= ordine.FKUtente = utente.IdUtente;
-
-                ordine.Dettagli.Add(new Dettagli
-                { FKPizza = id, Quantita = quantita, FKOrdine = ordine.IdOrdine});
-
-                db.Ordini.Add(ordine);
-              
-
-                db.SaveChanges();
-                Session["NomeCliente"] = NomeCliente;
-                Session["ordine"] = ordine;
-                
-                //TempData["FKUtente"] = fkUt;
-
-                //return RedirectToAction("Carrello", "Cliente");
-                return RedirectToAction("Index", "Clienti");
-            }
-            return View();
         }
     
     }

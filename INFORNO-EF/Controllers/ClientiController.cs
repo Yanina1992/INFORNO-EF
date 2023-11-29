@@ -14,9 +14,6 @@ namespace INFORNO_EF.Controllers
         // GET: Clienti
         public ActionResult Index()
         {
-            //var orUtente = db.Ordini.Where(m => m.FKUtente.ToString() == TempData["FKUtente"]);
-            //orUtente.Include("Dettagli").ToList();
-
             var nomeCliente = Session["NomeCliente"] as string;
             var ordine = Session["ordine"] as string;
 
@@ -30,26 +27,40 @@ namespace INFORNO_EF.Controllers
                 ViewBag.ordine= ordine;
             }
 
-            //var trovaUtente = db.Utenti.Where(m => m.);
-            //var trovaUtente = db.Utenti.Select(m => new { m.Username, m.IdUtente, m.Ordini}).Where(m => m.Username == nomeCliente);
             var trovaUtente = db.Utenti.Where(m => m.Username == nomeCliente).FirstOrDefault();
             var trovaOrdini= trovaUtente.Ordini.ToList();
             
-            //var trovaId = db.Utenti.Select(m=> new {m.IdUtente}).Where
-            //var trovaOrdine = db.Ordini.Select(m => new { m.FKUtente }).Where(m => m.FKUtente == trovaUtente.);
-            
             return View(trovaOrdini);
         }
-        public ActionResult Create() 
+
+        public ActionResult Create(int id)
         {
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(Dettagli d)
+        public ActionResult Create(Ordini ordine, int id, DateTime Data, string IndirizzoSpedizione, string note, bool Concluso, string NomeCliente, int quantita)
         {
+            if (ModelState.IsValid)
+            {
+                Utenti utente = db.Utenti.Where(u => u.Username == NomeCliente).FirstOrDefault();
+                int fkUt = ordine.FKUtente = utente.IdUtente;
+
+                ordine.Dettagli.Add(new Dettagli
+                { FKPizza = id, Quantita = quantita, FKOrdine = ordine.IdOrdine });
+
+                db.Ordini.Add(ordine);
+
+
+                db.SaveChanges();
+                Session["NomeCliente"] = NomeCliente;
+                Session["ordine"] = ordine;
+
+                return RedirectToAction("Index", "Clienti");
+            }
             return View();
         }
+
     }
 }
