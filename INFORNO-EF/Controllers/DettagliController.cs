@@ -65,10 +65,11 @@ namespace INFORNO_EF.Controllers
         }
 
         // GET: Dettagli/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             ViewBag.FKOrdine = new SelectList(db.Ordini, "IdOrdine", "IndirizzoSpedizione");
             ViewBag.FKPizza = new SelectList(db.Pizze, "IdPizza", "Nome");
+
             return View();
         }
 
@@ -77,13 +78,31 @@ namespace INFORNO_EF.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdDettaglio,FKPizza,Quantita,FKOrdine")] Dettagli dettagli)
+        public ActionResult Create([Bind(Include = "IdDettaglio,FKPizza,Quantita")] Dettagli dettagli, int FKPizza, int Quantita)
         {
-            if (ModelState.IsValid)
+            //Find user id
+            var name = User.Identity.Name.ToString();
+            var userId = db.Utenti.Where(m => m.Username == name).FirstOrDefault().IdUtente;
+
+            //Check if the logged user already has an open order
+            var userOrder = db.Ordini.Where(m => m.FKUtente == userId).FirstOrDefault();
+
+            if(userOrder == null)
             {
-                db.Dettagli.Add(dettagli);
-                db.SaveChanges();
+                //If logger user has no orders, create a new one, having first saving the details data in a tempdata, in order to keep and use them later
+                TempData["fkPizza"] = FKPizza;
+                TempData["quantity"] = Quantita;
+
+                return RedirectToAction("Create", "Ordini");
+            }
+            else
+            { //RIRRENDI DA QUI-------------------------------------------------------------------->>>>>>>>>>>>>>>>>>>>>>><
+              if (ModelState.IsValid)
+              {
+                //db.Dettagli.Add(dettagli);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
+              }
             }
 
             ViewBag.FKOrdine = new SelectList(db.Ordini, "IdOrdine", "IndirizzoSpedizione", dettagli.FKOrdine);

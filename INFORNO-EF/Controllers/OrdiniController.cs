@@ -48,8 +48,27 @@ namespace INFORNO_EF.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdOrdine,Data,IndirizzoSpedizione,Note,FKUtente,ImportoTotale,Concluso,Evaso")] Ordini ordini)
+        public ActionResult Create(Ordini ordini)
         {
+            /*[Bind(Include = "IdOrdine,Data,IndirizzoSpedizione,FKUtente,ImportoTotale")]*/
+
+            ordini.Data = DateTime.Now;
+            var name = User.Identity.Name.ToString();
+            ordini.FKUtente = db.Utenti.Where(m => m.Username == name).FirstOrDefault().IdUtente;
+
+            //RIPRENDI DA QUI
+            /* decimal importo =*/ 
+            //Retrieve data from Dettagli > Create, in order to calculate the ImportoTotale by multiplicating price and quantity
+            var fkPizza = TempData["fkPizza"];
+            var quantita = TempData["quantity"];
+
+            var findPizza = db.Pizze.Find(fkPizza);
+            var prezzo = Convert.ToDecimal(findPizza.Prezzo);
+
+            var importo = prezzo * Convert.ToInt32(quantita);
+
+            ordini.ImportoTotale = importo;
+
             if (ModelState.IsValid)
             {
                 db.Ordini.Add(ordini);
