@@ -14,39 +14,25 @@ namespace INFORNO_EF.Controllers
     {
         private Context db = new Context();
 
-        //private Context db = new Context();
-        //// GET: Dettagli
-
-        //List<Dettagli> carrello = new List<Dettagli>();
-        //public ActionResult Index(int id)
-        //{
-        //    return View(db.Pizze.ToList());
-        //}
-
-        //public ActionResult Create(int id, int? quantita)
-        //{
-        //    Dettagli dettagli = new Dettagli();
-        //    dettagli.Quantita = quantita;
-        //    dettagli.FKPizza = id;
-
-        //    carrello.Add(dettagli);
-        //    Session["carrello"] = carrello;
-
-
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult Create(Dettagli d)
-        //{
-        //    return View();
-        //}
-
         // GET: Dettagli
-        public ActionResult Index()
+        public ActionResult Index()     
         {
-            var dettagli = db.Dettagli.Include(d => d.Ordini).Include(d => d.Pizze);
-            return View(dettagli.ToList());
+            //I need to get only the logged user details
+            var userName = User.Identity.Name;
+            var userId = db.Utenti.Where(m => m.Username == userName).FirstOrDefault().IdUtente;
+
+            var order = db.Ordini.Where(m => m.FKUtente == userId).FirstOrDefault();
+           
+            if(order == null)
+            { 
+                ViewBag.ErrorMessage = "Il carrello è vuoto :(";
+                return View();           
+            }
+            else
+            {
+                 var detailsList = order.Dettagli.ToList();
+                 return View(detailsList);
+            }
         }
 
         // GET: Dettagli/Details/5

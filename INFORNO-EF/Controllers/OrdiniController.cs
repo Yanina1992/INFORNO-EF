@@ -86,7 +86,6 @@ namespace INFORNO_EF.Controllers
             }
 
             ViewBag.FKUtente = new SelectList(db.Utenti, "IdUtente", "Username", ordini.FKUtente);
-            //return View(ordini);
             return RedirectToAction("Details", new { @id = ordini.IdOrdine });
         }
 
@@ -117,7 +116,7 @@ namespace INFORNO_EF.Controllers
             {
                 db.Entry(ordini).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { @id = ordini.IdOrdine });
             }
             ViewBag.FKUtente = new SelectList(db.Utenti, "IdUtente", "Username", ordini.FKUtente);
             return View(ordini);
