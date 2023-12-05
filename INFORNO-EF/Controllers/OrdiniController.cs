@@ -48,16 +48,12 @@ namespace INFORNO_EF.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Ordini ordini)
+        public ActionResult Create([Bind(Include = "IndirizzoSpedizione")] Ordini ordini)
         {
-            /*[Bind(Include = "IdOrdine,Data,IndirizzoSpedizione,FKUtente,ImportoTotale")]*/
-
             ordini.Data = DateTime.Now;
             var name = User.Identity.Name.ToString();
             ordini.FKUtente = db.Utenti.Where(m => m.Username == name).FirstOrDefault().IdUtente;
 
-            //RIPRENDI DA QUI
-            /* decimal importo =*/ 
             //Retrieve data from Dettagli > Create, in order to calculate the ImportoTotale by multiplicating price and quantity
             var fkPizza = TempData["fkPizza"];
             var quantita = TempData["quantity"];
@@ -73,11 +69,25 @@ namespace INFORNO_EF.Controllers
             {
                 db.Ordini.Add(ordini);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                //After having create the Ordine, I can create the Dettagli
+                Dettagli dettagli = new Dettagli();
+                dettagli.FKPizza = Convert.ToInt32(fkPizza);
+                dettagli.Quantita = Convert.ToInt32(quantita);
+                dettagli.FKOrdine = ordini.IdOrdine;
+
+                if (ModelState.IsValid)
+                {
+                    db.Dettagli.Add(dettagli);
+                    db.SaveChanges();
+                    return RedirectToAction("Details", new { @id = ordini.IdOrdine });
+                }
+
             }
 
             ViewBag.FKUtente = new SelectList(db.Utenti, "IdUtente", "Username", ordini.FKUtente);
-            return View(ordini);
+            //return View(ordini);
+            return RedirectToAction("Details", new { @id = ordini.IdOrdine });
         }
 
         // GET: Ordini/Edit/5

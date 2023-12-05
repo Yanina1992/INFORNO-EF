@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Dettagli ordine</h2>
 
 <div>
     <h4>Ordini</h4>
@@ -34,11 +34,11 @@
             @Html.DisplayFor(model => model.IndirizzoSpedizione)
         </dd>
 
-        <dt>
+        <dt class="d-none">
             @Html.DisplayNameFor(model => model.Note)
         </dt>
 
-        <dd>
+        <dd class="d-none">
             @Html.DisplayFor(model => model.Note)
         </dd>
 
@@ -50,25 +50,25 @@
             @Html.DisplayFor(model => model.ImportoTotale)
         </dd>
 
-        <dt>
+        <dt class="d-none">
             @Html.DisplayNameFor(model => model.Concluso)
         </dt>
 
-        <dd>
+        <dd class="d-none">
             @Html.DisplayFor(model => model.Concluso)
         </dd>
 
-        <dt>
+        <dt class="d-none">
             @Html.DisplayNameFor(model => model.Evaso)
         </dt>
 
-        <dd>
+        <dd class="d-none">
             @Html.DisplayFor(model => model.Evaso)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdOrdine }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Concludi ordine", "Edit", new { id = Model.IdOrdine }) |
+    @Html.ActionLink("Continua ad ordinare", "Index")
 </p>

@@ -89,18 +89,21 @@ namespace INFORNO_EF.Controllers
 
             if(userOrder == null)
             {
-                //If logger user has no orders, create a new one, having first saving the details data in a tempdata, in order to keep and use them later
+                //If logged user has no orders, create a new one, having first saving the details data in a tempdata, in order to keep and use them later
                 TempData["fkPizza"] = FKPizza;
                 TempData["quantity"] = Quantita;
 
                 return RedirectToAction("Create", "Ordini");
             }
             else
-            { //RIRRENDI DA QUI-------------------------------------------------------------------->>>>>>>>>>>>>>>>>>>>>>><
+            {
+                //If logged user already has an order, add a detait to it
+              dettagli.FKOrdine = userOrder.IdOrdine;
+
               if (ModelState.IsValid)
               {
-                //db.Dettagli.Add(dettagli);
-                //db.SaveChanges();
+                db.Dettagli.Add(dettagli);
+                db.SaveChanges();
                 return RedirectToAction("Index");
               }
             }
