@@ -4,10 +4,9 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Dettagli ordine</h2>
+<h2>Riepilogo ordine</h2>
 
 <div>
-    <h4>Ordini</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -69,6 +68,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Concludi ordine", "Edit", new { id = Model.IdOrdine }) |
+    @Html.ActionLink("Procedi per concludere", "Edit", new { id = Model.IdOrdine }) |
     @Html.ActionLink("Continua ad ordinare", "Index", "Home")
 </p>

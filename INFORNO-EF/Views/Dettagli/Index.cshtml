@@ -45,11 +45,13 @@ else
                     @Html.ActionLink("Delete", "Delete", new { id = item.IdDettaglio })
                 </td>
             </tr>
+
+            Session["OrderId"] = item.FKOrdine;
         }
 
     </table>
+    @Html.ActionLink("Concludi ordine", "Details", "Ordini", new { id = Session["OrderId".ToString()] }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Continua ad ordinare", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary" })
 
-    <button>Concludi ordine</button>
-    <button>Continua ad ordinare</button>
 }
 

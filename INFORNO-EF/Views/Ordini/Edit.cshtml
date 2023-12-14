@@ -9,85 +9,91 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Ordini</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.IdOrdine)
 
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-horizontal">
+        <h4>Ordini</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IdOrdine)
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        @Html.HiddenFor(model => model.Data)
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.IndirizzoSpedizione, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IndirizzoSpedizione, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IndirizzoSpedizione, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        @Html.HiddenFor(model => model.IndirizzoSpedizione)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
             </div>
-        </div>*@
-    @Html.HiddenFor(model => model.Data)
+        </div>
 
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.IndirizzoSpedizione, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IndirizzoSpedizione, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IndirizzoSpedizione, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.FKUtente, "FKUtente", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("FKUtente", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FKUtente, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        @Html.HiddenFor(model => model.FKUtente)
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.ImportoTotale, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ImportoTotale, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ImportoTotale, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        @Html.HiddenFor(model => model.ImportoTotale)
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Concluso, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            @*<div class="col-md-10">
+                        <div class="checkbox">
+                            <p>Spunta la casella se vuoi concludere l'ordine</p>
+                            @Html.CheckBox("Concluso")
+                            @Html.ValidationMessageFor(model => model.Concluso, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>*@
+            @Html.HiddenFor(model => model.Concluso)
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.Evaso, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Evaso)
+                            @Html.ValidationMessageFor(model => model.Evaso, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>*@
+            @Html.HiddenFor(model => model.Evaso)
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Acquista ora" class="btn btn-default" />
+                </div>
             </div>
-        </div>*@
-    @Html.HiddenFor(model => model.IndirizzoSpedizione)
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
         </div>
     </div>
+}
 
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.FKUtente, "FKUtente", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("FKUtente", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.FKUtente, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-    @Html.HiddenFor(model => model.FKUtente)
-
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.ImportoTotale, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ImportoTotale, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ImportoTotale, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
-    @Html.HiddenFor(model => model.ImportoTotale)
-
-    <div class="form-group">
-        @*@Html.LabelFor(model => model.Concluso, htmlAttributes: new { @class = "control-label col-md-2" })*@
-        <div class="col-md-10">
-            <div class="checkbox">
-                <p>Spunta la casella se vuoi concludere l'ordine</p>
-                @Html.CheckBox("Concluso")
-                @Html.ValidationMessageFor(model => model.Concluso, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.Evaso, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.Evaso)
-                @Html.ValidationMessageFor(model => model.Evaso, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>*@
-    @Html.HiddenFor(model => model.Evaso)
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Concludi ordine" class="btn btn-default" />
-        </div>
-    </div>
-</div>
+@{ 
+    <p>@ViewBag.OrdineConcluso</p>
 }
 
 <div>

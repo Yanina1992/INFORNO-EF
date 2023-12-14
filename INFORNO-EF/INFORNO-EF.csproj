@@ -273,6 +273,8 @@
     <Content Include="Views\Ordini\Details.cshtml" />
     <Content Include="Views\Ordini\Edit.cshtml" />
     <Content Include="Views\Ordini\Index.cshtml" />
+    <Content Include="Views\Admin\GestisciOrdiniConclusi.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

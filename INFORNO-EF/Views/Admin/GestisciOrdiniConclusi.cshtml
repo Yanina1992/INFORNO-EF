@@ -1,0 +1,69 @@
+﻿@model IEnumerable<INFORNO_EF.Models.Ordini>
+
+@{
+    ViewBag.Title = "GestisciOrdiniConclusi";
+}
+
+<h2>GestisciOrdiniConclusi</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Utenti.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IndirizzoSpedizione)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImportoTotale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Concluso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Evaso)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Utenti.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IndirizzoSpedizione)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImportoTotale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Concluso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Evaso)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdOrdine }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdOrdine }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdOrdine })
+        </td>
+    </tr>
+}
+
+</table>
