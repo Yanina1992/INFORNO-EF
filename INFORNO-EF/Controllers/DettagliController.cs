@@ -13,8 +13,6 @@ namespace INFORNO_EF.Controllers
     public class DettagliController : Controller
     {
         private Context db = new Context();
-
-        // GET: Dettagli
         public ActionResult Index()     
         {
             //I need to get only the logged user details
@@ -35,7 +33,6 @@ namespace INFORNO_EF.Controllers
             }
         }
 
-        // GET: Dettagli/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -50,7 +47,6 @@ namespace INFORNO_EF.Controllers
             return View(dettagli);
         }
 
-        // GET: Dettagli/Create
         public ActionResult Create(int id)
         {
             ViewBag.FKOrdine = new SelectList(db.Ordini, "IdOrdine", "IndirizzoSpedizione");
@@ -59,9 +55,6 @@ namespace INFORNO_EF.Controllers
             return View();
         }
 
-        // POST: Dettagli/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdDettaglio,FKPizza,Quantita")] Dettagli dettagli, int FKPizza, int Quantita)
@@ -83,23 +76,42 @@ namespace INFORNO_EF.Controllers
             }
             else
             {
-                //If logged user already has an order, add a detait to it
-              dettagli.FKOrdine = userOrder.IdOrdine;
+                //If logged user already has an order:
+                //check if already exist an order with this fkPizza
+                var findDetWithSameFKPizza = db.Dettagli.Where(m => m.FKOrdine == userOrder.IdOrdine && m.FKPizza == FKPizza).FirstOrDefault();
 
-              if (ModelState.IsValid)
-              {
-                db.Dettagli.Add(dettagli);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-              }
+                if (findDetWithSameFKPizza != null)
+                {
+                    var quantita = findDetWithSameFKPizza.Quantita += Quantita;
+                    dettagli.Quantita = quantita;
+                    //if it exists, we only have to increase the quantity
+                    if (ModelState.IsValid)
+                    {                       
+                        db.Entry(dettagli).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+       
+                }
+                //if not, we have to add a detail
+                else
+                {
+                    dettagli.FKOrdine = userOrder.IdOrdine;
+
+                    if (ModelState.IsValid)
+                    {
+                        db.Dettagli.Add(dettagli);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                   
             }
 
             ViewBag.FKOrdine = new SelectList(db.Ordini, "IdOrdine", "IndirizzoSpedizione", dettagli.FKOrdine);
             ViewBag.FKPizza = new SelectList(db.Pizze, "IdPizza", "Nome", dettagli.FKPizza);
             return View(dettagli);
-        }
-
-        // GET: Dettagli/Edit/5
+    }
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -116,9 +128,6 @@ namespace INFORNO_EF.Controllers
             return View(dettagli);
         }
 
-        // POST: Dettagli/Edit/5
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdDettaglio,FKPizza,Quantita,FKOrdine")] Dettagli dettagli)
@@ -134,7 +143,6 @@ namespace INFORNO_EF.Controllers
             return View(dettagli);
         }
 
-        // GET: Dettagli/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -149,7 +157,6 @@ namespace INFORNO_EF.Controllers
             return View(dettagli);
         }
 
-        // POST: Dettagli/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
