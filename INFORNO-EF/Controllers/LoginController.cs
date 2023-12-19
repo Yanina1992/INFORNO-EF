@@ -15,12 +15,10 @@ namespace INFORNO_EF.Controllers
     public class LoginController : Controller
     {
         private Context db = new Context();
-        // GET: Login
         public ActionResult Index()
         {
             return View();
         }
-
         public ActionResult Login() { return View(); }
 
         [HttpPost]
@@ -44,7 +42,6 @@ namespace INFORNO_EF.Controllers
         public ActionResult Registrati() {  return View(); }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
         public ActionResult Registrati(Utenti utente)
         {
             if (ModelState.IsValid)

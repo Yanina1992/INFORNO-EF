@@ -12,19 +12,12 @@ namespace INFORNO_EF.Controllers
 {
     public class OrdiniController : Controller
     {
-        //This list will save all the concluded orders, so that the admin can proceed to prepare and archive them
-        //static List<Ordini> ordiniList = new List<Ordini>();
-
         private Context db = new Context();
-
-        // GET: Ordini
         public ActionResult Index()
         {
             var ordini = db.Ordini.Include(o => o.Utenti);
             return View(ordini.ToList());
         }
-
-        // GET: Ordini/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -62,17 +55,12 @@ namespace INFORNO_EF.Controllers
 
             return View(ordini);
         }
-
-        // GET: Ordini/Create
         public ActionResult Create()
         {
             ViewBag.FKUtente = new SelectList(db.Utenti, "IdUtente", "Username");
             return View();
         }
 
-        // POST: Ordini/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IndirizzoSpedizione")] Ordini ordini)
@@ -115,8 +103,6 @@ namespace INFORNO_EF.Controllers
             ViewBag.FKUtente = new SelectList(db.Utenti, "IdUtente", "Username", ordini.FKUtente);
             return RedirectToAction("Details", new { @id = ordini.IdOrdine });
         }
-
-        // GET: Ordini/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -132,9 +118,6 @@ namespace INFORNO_EF.Controllers
             return View(ordini);
         }
 
-        // POST: Ordini/Edit/5
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdOrdine,Data,IndirizzoSpedizione,Note,FKUtente,ImportoTotale,Concluso,Evaso")] Ordini ordini)
@@ -151,8 +134,6 @@ namespace INFORNO_EF.Controllers
             ViewBag.FKUtente = new SelectList(db.Utenti, "IdUtente", "Username", ordini.FKUtente);
             return View();
         }
-
-        // GET: Ordini/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -167,7 +148,6 @@ namespace INFORNO_EF.Controllers
             return View(ordini);
         }
 
-        // POST: Ordini/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

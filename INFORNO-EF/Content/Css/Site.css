@@ -1,6 +1,6 @@
 ﻿/* Set padding to keep content from hitting the edges */
 .body-content {
-    margin-top: 15px;
+    margin-top: 15px;;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -16,24 +16,70 @@ html {
     height: 100%;
 }
 
-body {
-   /* color: white;*/
-    /*background-position: center;
-    background-repeat: no-repeat;*/
-/*    background-color: black;*/
-    /*background-image: url('immagini/istockphoto-177807692-612x612.jpg');
+
+#bg-forno {
+    background-image: url(../../Content/Immagini/istockphoto-177807692-612x612.jpg);
+    height: 30vh;
     background-size: cover;
-    background-attachment: fixed;
-    position: relative;*/
+    background-position: center;
+}
+#bg-forno {
+    background-image: url(../../Content/Immagini/istockphoto-177807692-612x612.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
-h1, h2, h3, h4, h5, p{
-/*    color: white;
-    background-color: black;*/
+/*Media queries for upper div*/
+/*@media (min-width: 576px){
+    #above{
+        position: relative !important;
+    }
+}*/
+@media (min-width: 768px) {
+/*   #above{
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 2 !important;
+    }*/
+    #bg-forno {
+        position: sticky;
+        top: -11%;
+        z-index: 1;
+    }
+    #logo-div {
+        height: 15vh;
+    }
+    #description{
+        font-size: 1.2em;
+    }
+ 
 }
 
-#above {
-    position: sticky;
-    top: 0;
-    z-index: 2;
+@media (min-width: 992px) {
+    #bg-forno {
+        position: sticky;
+        top: -7%;
+        z-index: 1;
+        height: 27vh;
+    }
+    #logo-div {
+        height: 19vh;
+    }
 }
+
+@media (min-width: 1072px) {
+    #bg-forno {
+        position: sticky;
+        top: -14%;
+        z-index: 1;
+        height: 30vh;
+    }
+    #logo-div {
+        height: 8vh;
+    }
+}
+
+.bg-titles {
+    background-color: #6c2f18b0;
+}
+

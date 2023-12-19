@@ -35,35 +35,82 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Utenti.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IndirizzoSpedizione)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Note)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImportoTotale)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Concluso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Evaso)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdOrdine }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdOrdine }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdOrdine })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Utenti.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IndirizzoSpedizione)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImportoTotale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Concluso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evaso)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdOrdine }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdOrdine }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdOrdine })
+            </td>
+        </tr>
+    }
 
 </table>
+
+
+<button id="GetOrdini">Totale degli ordini evasi</button>
+<div id="OrdiniEv"></div>
+
+<button id="GetTotIncassato">Totale incassato</button>
+<div id="TotInc"></div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#GetOrdini").click(function () {
+                $("#OrdiniEv").empty();
+
+                $.ajax({
+                    method: "GET",
+                    url: "GetOrdiniEvasi",
+                    success: function (data) {
+                        console.log(data);
+                        var par = "<p>" + data + "</p>";
+                        $("#OrdiniEv").append(par);
+                    }
+                });
+
+            });
+
+            $("#GetTotIncassato").click(function () {
+                $("#TotInc").empty();
+
+                $.ajax({
+                    method: "GET",
+                    url: "GetTotaleIncassato",
+                    success: function (data) {
+                        console.log(data);
+                        var par = "<p>" + data + "</p>";
+                        $("#TotInc").append(par);
+                    }
+                });
+
+            })
+
+        });
+    </script>
+}

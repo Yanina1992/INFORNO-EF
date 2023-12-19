@@ -4,20 +4,35 @@
     ViewBag.Title = "Index";
 }
 
-<h2 class="text-light">Le nostre pizze</h2>
-
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col col-4 card">
-                <img src="~/Content/Immagini/@item.Foto" class="card-img-top h-75 p-2" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">@item.Nome</h5>
-                    <p class="card-text"><strong>@item.Prezzo</strong></p>
-                    @Html.ActionLink("Scopri di più", "Details", "Home", new { id = item.IdPizza }, new { @class = "btn btn-primary" })
-                </div>
-            </div>
-        }
-    </div>
+<div class="text-light text-center d-flex flex-column justify-content-end mb-3" id="bg-forno">
+    <h2 class="bg-titles">BENVENUTI alla Pizzeria In Forno</h2>
+    <h4 class="bg-titles" id="description">
+        Dove la passione per la perfezione è l'ingrediente segreto! Materie prime di alta qualità, lievitazione artigianale e amore per la tradizione,
+        ogni pizza racconta una storia di gusto autentico.
+    </h4>
 </div>
+
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col col-12 col-sm-6 col-md-4 card bg-opacity-25 border-5 border-light" style=" background-color: #6c2f18b0">
+                    <img src="~/Content/Immagini/@item.Foto" class="card-img-top h-75 p-2" alt="pizza">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-truncate">@item.Nome</h5>
+                        <p class="card-text"><strong>@item.Prezzo €</strong></p>
+
+                        @if (User.IsInRole("admin"))
+                        {
+                            @Html.ActionLink("Dettagli", "Details", "Pizze", new { id = item.IdPizza }, new { @class = "btn btn-dark fw-bold" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Scopri di più", "Details", "Home", new { id = item.IdPizza }, new { @class = "btn btn-dark fw-bold" })
+                        }
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>

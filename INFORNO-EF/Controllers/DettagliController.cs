@@ -66,7 +66,7 @@ namespace INFORNO_EF.Controllers
             //Check if the logged user already has an open order
             var userOrder = db.Ordini.Where(m => m.FKUtente == userId).FirstOrDefault();
 
-            if(userOrder == null)
+            if (userOrder == null)
             {
                 //If logged user has no orders, create a new one, having first saving the details data in a tempdata, in order to keep and use them later
                 TempData["fkPizza"] = FKPizza;
@@ -76,42 +76,22 @@ namespace INFORNO_EF.Controllers
             }
             else
             {
-                //If logged user already has an order:
-                //check if already exist an order with this fkPizza
-                var findDetWithSameFKPizza = db.Dettagli.Where(m => m.FKOrdine == userOrder.IdOrdine && m.FKPizza == FKPizza).FirstOrDefault();
+                //If logged user already has an order, add a detait to it
+                dettagli.FKOrdine = userOrder.IdOrdine;
 
-                if (findDetWithSameFKPizza != null)
+                if (ModelState.IsValid)
                 {
-                    var quantita = findDetWithSameFKPizza.Quantita += Quantita;
-                    dettagli.Quantita = quantita;
-                    //if it exists, we only have to increase the quantity
-                    if (ModelState.IsValid)
-                    {                       
-                        db.Entry(dettagli).State = EntityState.Modified;
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
-       
+                    db.Dettagli.Add(dettagli);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                //if not, we have to add a detail
-                else
-                {
-                    dettagli.FKOrdine = userOrder.IdOrdine;
-
-                    if (ModelState.IsValid)
-                    {
-                        db.Dettagli.Add(dettagli);
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
-                }
-                   
             }
 
             ViewBag.FKOrdine = new SelectList(db.Ordini, "IdOrdine", "IndirizzoSpedizione", dettagli.FKOrdine);
             ViewBag.FKPizza = new SelectList(db.Pizze, "IdPizza", "Nome", dettagli.FKPizza);
             return View(dettagli);
-    }
+        }
+
         public ActionResult Edit(int? id)
         {
             if (id == null)

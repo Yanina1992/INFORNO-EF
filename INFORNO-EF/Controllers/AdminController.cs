@@ -14,48 +14,26 @@ namespace INFORNO_EF.Controllers
     public class AdminController : Controller
     {
         private Context db = new Context();
-        // GET: Admin
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(Pizze p, string Nome, HttpPostedFileBase FileFoto, string Prezzo, string TempoConsegna, string Ingredienti)
-        {
-            if (ModelState.IsValid)
-            {
-                if (FileFoto.ContentLength > 0)
-                {
-                    string nomeFoto = FileFoto.FileName;
-                    string pathToSave = Path.Combine(Server.MapPath("~/Content/Immagini"), nomeFoto);
-                    FileFoto.SaveAs(pathToSave);
-                }
-
-                p.Foto = FileFoto.FileName;
-                p.Nome= Nome;
-                p.Prezzo= Prezzo;
-                p.TempoConsegna= TempoConsegna;
-                p.Ingredienti= Ingredienti;
-                db.Pizze.Add(p);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
-            return View(p);
-        }
-
         public ActionResult GestisciOrdiniConclusi()
         {
-            //var ordiniList = TempData["ordiniList"];
             var ordiniList = db.Ordini.Where(m => m.Concluso == true).ToList();
             return View(ordiniList);
         }
+        public JsonResult GetOrdiniEvasi()
+        {
+            var ordiniEvasi = db.Ordini.Where(m => m.Evaso == true).Count();
+            return Json(ordiniEvasi, JsonRequestBehavior.AllowGet);
+        }
 
+        public JsonResult GetTotaleIncassato()
+        {
+            var ordiniEvasi = db.Ordini.Where(m => m.Evaso == true).Sum(m => m.ImportoTotale);
+            return Json(ordiniEvasi, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,5 +62,7 @@ namespace INFORNO_EF.Controllers
             ViewBag.FKUtente = new SelectList(db.Utenti, "IdUtente", "Username", ordini.FKUtente);
             return View();
         }
+
+       
     }
 }

@@ -4,32 +4,31 @@
 }
 
 <h1 class="text-center">Registrati</h1>
-<div class="d-flex justify-content-center flex-colum">
-    
+<div class="d-flex justify-content-center flex-column align-items-center" style="height: 63.2vh; background-color: #6c2f18b0">
+
 
     @using (Html.BeginForm())
     {
 
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column" style="width: 72vw">
+            <h3 class="text-center">Inserisci i tuoi dati e registrati</h3>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group form-control text-center">
-            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label" })
-            @*@Html.EditorFor(model => model.Username)*@
-            @Html.TextBox("Username")
-            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-        </div>
+            <div class="form-group form-control text-center">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBox("Username")
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
 
-        <div class="form-group form-control text-center">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
-            @*@Html.EditorFor(model => model.Password)*@
-            @Html.TextBox("Password")
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-        </div>
+            <div class="form-group form-control text-center">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBox("Password")
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
 
             <div class="text-center">
-                <input type="submit" value="Registrati" class="btn btn-primary" />
+                <input type="submit" value="Registrati" class="btn btn-dark m-2 fw-bold" />
             </div>
 
         </div>

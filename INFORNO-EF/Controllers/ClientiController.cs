@@ -11,7 +11,6 @@ namespace INFORNO_EF.Controllers
     public class ClientiController : Controller
     {
         private Context db = new Context();
-        // GET: Clienti
         public ActionResult Index()
         {
             var nomeCliente = Session["NomeCliente"] as string;
@@ -51,7 +50,6 @@ namespace INFORNO_EF.Controllers
                 { FKPizza = id, Quantita = quantita, FKOrdine = ordine.IdOrdine });
 
                 db.Ordini.Add(ordine);
-
 
                 db.SaveChanges();
                 Session["NomeCliente"] = NomeCliente;
