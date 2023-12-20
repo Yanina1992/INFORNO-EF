@@ -70,7 +70,7 @@ namespace INFORNO_EF.Controllers
             ordini.FKUtente = db.Utenti.Where(m => m.Username == name).FirstOrDefault().IdUtente;
 
             //Retrieve data from Dettagli > Create, in order to calculate the ImportoTotale by multiplicating price and quantity
-            var fkPizza = TempData["fkPizza"];
+            var fkPizza = Convert.ToInt32(TempData["fkPizza"]);
             var quantita = TempData["quantity"];
 
             var findPizza = db.Pizze.Find(fkPizza);

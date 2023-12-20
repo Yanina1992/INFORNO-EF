@@ -12,8 +12,10 @@ namespace INFORNO_EF.Models
         [Key]
         public int IdDettaglio { get; set; }
 
+        [Display(Name = "Pizza")]
         public int FKPizza { get; set; }
 
+        [Display(Name = "Quantità")]
         public int? Quantita { get; set; }
 
         public int FKOrdine { get; set; }

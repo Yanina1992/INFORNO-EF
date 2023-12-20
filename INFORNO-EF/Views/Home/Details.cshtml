@@ -15,9 +15,8 @@
             <p class="card-text"><strong>@Model.Prezzo€</strong></p>
             <p class="card-text"><strong>@Model.TempoConsegna</strong></p>
             <div class="form-group">
-                @Html.ActionLink("Aggiungi al carrello", "Create", "Dettagli", new { id = Model.IdPizza }, new { @class = "btn btn-dark text-light fw-bold"})
+                @Html.ActionLink("Aggiungi al carrello", "Create", "Dettagli", new { id = Model.IdPizza }, new { @class = "btn btn-dark text-light fw-bold" })
             </div>
         </div>
     </div>
 </div>
-

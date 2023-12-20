@@ -23,6 +23,7 @@ namespace INFORNO_EF.Controllers
             return View(db.Pizze.ToList());
         }
         
+        //Pizza details for costumers
         public ActionResult Details(int? id)
         {
             if(id == null)
@@ -36,6 +37,5 @@ namespace INFORNO_EF.Controllers
             }
             return View(pizza);
         }
-    
     }
 }
