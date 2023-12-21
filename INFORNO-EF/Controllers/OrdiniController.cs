@@ -65,7 +65,7 @@ namespace INFORNO_EF.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IndirizzoSpedizione")] Ordini ordini)
         {
-            ordini.Data = DateTime.Now;
+            ordini.Data = DateTime.Today;
             var name = User.Identity.Name.ToString();
             ordini.FKUtente = db.Utenti.Where(m => m.Username == name).FirstOrDefault().IdUtente;
 

@@ -20,6 +20,7 @@ namespace INFORNO_EF.Models
 
         [Column(TypeName = "date")]
         [Display(Name = "Data")]
+        [DataType(DataType.Date)]
         public DateTime Data { get; set; }
 
         [Required]

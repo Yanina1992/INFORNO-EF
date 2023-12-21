@@ -29,18 +29,6 @@ html {
     background-position: center;
 }
 
-/*Media queries for upper div*/
-/*@media (min-width: 576px){
-    #above{
-        position: relative !important;
-    }
-}*/
-@media (min-width: 768px) {
-/*   #above{
-        position: sticky !important;
-        top: 0 !important;
-        z-index: 2 !important;
-    }*/
     #bg-forno {
         position: sticky;
         top: -11%;
