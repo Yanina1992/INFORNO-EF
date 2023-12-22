@@ -54,7 +54,8 @@ namespace INFORNO_EF.Controllers
             //I send this id to the HttpPost Create, in order to generate a Dettaglio with this FKPizza
             TempData["fkpizza"] = fkpizza;
             //I send it to the view so that I can use it for a better UX
-            ViewBag.Id = id;
+            var nome = db.Pizze.Find(id).Nome;
+            ViewBag.Nome = nome;
 
             ViewBag.FKOrdine = new SelectList(db.Ordini, "IdOrdine", "IndirizzoSpedizione");
             ViewBag.FKPizza = new SelectList(db.Pizze, "IdPizza", "Nome");

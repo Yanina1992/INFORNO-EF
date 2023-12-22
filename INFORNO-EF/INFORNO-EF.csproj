@@ -282,6 +282,7 @@
     <Content Include="Views\Pizze\Details.cshtml" />
     <Content Include="Views\Pizze\Edit.cshtml" />
     <Content Include="Views\Pizze\Index.cshtml" />
+    <Content Include="Views\Dettagli\_GetQuantita.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

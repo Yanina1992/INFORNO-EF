@@ -4,37 +4,36 @@
     ViewBag.Title = "Create";
 }
 
-<h1 class="text-center mt-5">Quante pizze @ViewBag.id vuoi ordinare?</h1>
-<div class="d-flex justify-content-center flex-column align-items-center" style="height: 62vh; background-image: url('../../Content/Immagini/sfondo-caldo.png'); background-size: cover; background-position: center;">
-
+<div class="d-flex justify-content-center flex-column align-items-center mt-3" style="height: 62vh; background-image: url('../../Content/Immagini/sfondo-caldo.png'); background-size: cover; background-position: center;">
+    <h1 class="text-center text-light">Quante pizze @ViewBag.Nome vuoi ordinare?</h1>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-    <div class="d-flex flex-column align-items-center form-horizontal opacity-75" style="width: 73vw; background-color: #6c2f18b0">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="d-flex flex-column align-items-center form-horizontal opacity-75" style="width: 73vw; background-color: #6c2f18b0">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             @Html.HiddenFor(model => model.FKPizza, htmlAttributes: new { @for = "FKPizza" })
-     
-        <div class="form-group">
-            @Html.LabelFor(model => model.Quantita, htmlAttributes: new { @class = "control-label col-md-2 text-light" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Quantita, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Quantita, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Quantita, htmlAttributes: new { @class = "control-label col-md-2 text-light" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Quantita, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Quantita, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.HiddenFor(model => model.FKOrdine)
+
+            <div class="form-group me-5 mt-2 mb-2">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-dark text-light fw-bold" />
+                </div>
             </div>
         </div>
-
-        @Html.HiddenFor(model => model.FKOrdine)
-
-        <div class="form-group me-5 mt-2 mb-2">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-dark text-light fw-bold" />
-            </div>
-        </div>
-    </div>
-        }
-    </div>
+    }
+</div>
 
     <div>
         @Html.ActionLink("Back to List", "Index")
