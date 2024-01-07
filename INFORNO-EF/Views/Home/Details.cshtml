@@ -9,13 +9,13 @@
         @*<h1 class="text-center text-light m-5">@Model.Nome</h1>*@
         <img src="~/Content/Immagini/@Model.Foto" class="card-img" alt="pizza" style="height: 66vh">
         <div class="card-img-overlay">
-            <div class="text-center p-4" style="background-color: #6c2f18b0">
+            <div class="text-center p-4 d-flex flex-column align-items-center" style="background-color: #6c2f18b0">
                 <h1 class="card-title mt-4"><strong>@Model.Nome</strong></h1>
                 <p class="card-text"><strong>@Model.Ingredienti</strong></p>
                 <p class="card-text"><strong>@Model.Prezzo€</strong></p>
                 <p class="card-text"><strong>@Model.TempoConsegna</strong></p>
-                <div class="form-group">
-                    @Html.ActionLink("Aggiungi al carrello", "Create", "Dettagli", new { id = Model.IdPizza }, new { @class = "btn btn-dark text-light fw-bold" })
+                <div class="form-group" style="width: 30vw;">
+                    @Html.ActionLink("Aggiungi al carrello", "Create", "Dettagli", new { id = Model.IdPizza }, new { @class = "btn btn-dark text-light fw-bold w-100" })
                 </div>
             </div>
         </div>

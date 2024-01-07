@@ -4,7 +4,12 @@
     ViewBag.Title = "Create";
 }
 
+@{ 
+    var missingQuantity = @ViewBag.MissingQuantity;
+}
+
 <div class="d-flex justify-content-center flex-column align-items-center mt-3" style="height: 62vh; background-image: url('../../Content/Immagini/sfondo-caldo.png'); background-size: cover; background-position: center;">
+    
     <h1 class="text-center text-light">Quante pizze @ViewBag.Nome vuoi ordinare?</h1>
     @using (Html.BeginForm())
     {
@@ -17,8 +22,8 @@
             @Html.HiddenFor(model => model.FKPizza, htmlAttributes: new { @for = "FKPizza" })
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Quantita, htmlAttributes: new { @class = "control-label col-md-2 text-light" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.Quantita, htmlAttributes: new { @class = "text-light" })
+                <div>
                     @Html.EditorFor(model => model.Quantita, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Quantita, "", new { @class = "text-danger" })
                 </div>
@@ -26,15 +31,16 @@
 
             @Html.HiddenFor(model => model.FKOrdine)
 
-            <div class="form-group me-5 mt-2 mb-2">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-dark text-light fw-bold" />
-                </div>
+            <div class="form-group me-5 mt-2 mb-2 text-center" style="width: 30vw; margin-left: 3em">
+                <input type="submit" value="Continua" class="btn btn-dark text-light fw-bold" style="width: 30vw" />
             </div>
+
         </div>
     }
-</div>
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+    @if (missingQuantity != null)
+            {
+                <p class="text-dark bg-light">@missingQuantity.ToString()</p>
+            }
+
+</div>

@@ -38,17 +38,14 @@
             @Html.HiddenFor(model => model.Evaso)
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Acquista ora" class="btn btn-default" />
+                <div class="col-md-offset-2 col-md-10 d-flex justify-content-center align-items-center p-5 w-100">
+                    <input type="submit" value="Acquista ora" class="btn btn-dark text-light fw-bold w-100" />
                 </div>
             </div>
         </div>
     }
 
     @{
-        <p>@ViewBag.OrdineConcluso</p>
+        <h4 class="text-center">@ViewBag.OrdineConcluso</h4>
     }
-    </div>
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>

@@ -68,8 +68,14 @@
 
         </dl>
     </div>
-    <p>
-        @Html.ActionLink("Procedi per concludere", "Edit", new { id = Model.IdOrdine }) |
-        @Html.ActionLink("Continua ad ordinare", "Index", "Home")
-    </p>
+
+    <div class="d-flex justify-content-evenly p-5">
+        <div style="width: 30vw">
+            @Html.ActionLink("Procedi per concludere", "Edit", new { id = Model.IdOrdine }, new { @class = "btn btn-dark text-light fw-bold w-100" })
+        </div>
+    </div>
+
+    
+    
+
 </div>

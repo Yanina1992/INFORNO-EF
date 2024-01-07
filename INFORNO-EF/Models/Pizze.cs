@@ -28,6 +28,7 @@ namespace INFORNO_EF.Models
         public string Foto { get; set; }
 
         [NotMapped]
+        [Display(Name = "Foto")]
         public string FileFoto { get; set; }
 
         [Required]

@@ -65,8 +65,10 @@ namespace INFORNO_EF.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Quantita")] Dettagli dettagli, int Quantita)
+        public ActionResult Create([Bind(Include = "Quantita")] Dettagli dettagli, int ?Quantita)
         {
+            if(Quantita != null && Quantita.Value > 0)
+            {
              var fKpizza = TempData["fkpizza"];
 
             //Find user id
@@ -97,6 +99,11 @@ namespace INFORNO_EF.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
+            }
+            }
+            else
+            {
+                ViewBag.missingQuantity = "Valore incorretto o non supportato. Inserire la quantità di pizze da aggiungere al carrello.";
             }
 
             ViewBag.FKOrdine = new SelectList(db.Ordini, "IdOrdine", "IndirizzoSpedizione", dettagli.FKOrdine);

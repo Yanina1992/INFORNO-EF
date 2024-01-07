@@ -4,48 +4,48 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Gestione ordini</h2>
+<div class="m-2 d-flex flex-column">
+    <h2>Gestione ordini</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Ordini</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.IdOrdine)
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-        @Html.HiddenFor(model => model.Data)
+        <div class="form-horizontal d-flex flex-column">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.IdOrdine)
 
-        @Html.HiddenFor(model => model.IndirizzoSpedizione)
+            @Html.HiddenFor(model => model.Data)
 
-        @Html.HiddenFor(model => model.Note)
+            @Html.HiddenFor(model => model.IndirizzoSpedizione)
 
-        @Html.HiddenFor(model => model.FKUtente)
+            @Html.HiddenFor(model => model.Note)
 
-        @Html.HiddenFor(model => model.ImportoTotale)
+            @Html.HiddenFor(model => model.FKUtente)
 
-        @Html.HiddenFor(model => model.Concluso)
+            @Html.HiddenFor(model => model.ImportoTotale)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Evaso, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Evaso)
-                    @Html.ValidationMessageFor(model => model.Evaso, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Concluso)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Evaso, htmlAttributes: new { @class = "control-label col-md-2" })
+                @*<div class="col-md-10">*@
+                @*<div class="checkbox">*@
+                <p>(Spunta la casella per evadere se l'ordine è già stato inviato)</p>
+                @Html.CheckBox("Evaso")
+                @Html.ValidationMessageFor(model => model.Evaso, "", new { @class = "text-danger" })
+                @*</div>*@
+                @*</div>*@
+            </div>
+
+            <div class="form-group align-self-center" style="width: 30vw">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Salva" class="btn btn-dark text-light fw-bold w-100" />
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salva" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}                              
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    }
+    @Html.ActionLink("Torna alla lista degli ordini conclusi", "GestisciOrdiniConclusi")
 </div>
+
