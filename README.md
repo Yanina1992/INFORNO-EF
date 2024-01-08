@@ -17,9 +17,11 @@ Lato amministratore:
 - gestione incassi
 - aggiunta pizze al menu
 
-<div style:"text-center">
 ![image](https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home-mobile.png)
-</div>
+
+<p align="center">
+  <img src="https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home-mobile.png" alt="home">
+</p>
 
 ## Tecnologie utilizzate
 - HTML5
