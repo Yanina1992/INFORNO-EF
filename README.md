@@ -1,13 +1,8 @@
-# Pizzeria
+# Pizzeria In Forno
 
-## E-commerce
+## E-commerce realizzato a scopo didattico per la gestione degli ordini di una pizzeria.
 
 ![image](https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home.png)
-
-### In Forno
-E-commerce realizzato a scopo didattico per la gestione degli ordini di una pizzeria.
-
-![image](https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home-mobile.png)
 
 ###Funzionalità
 
@@ -21,6 +16,10 @@ Lato amministratore:
 - gestione ordini ricevuti
 - gestione incassi
 - aggiunta pizze al menu
+
+<div style:"text-center">
+![image](https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home-mobile.png)
+</div>
 
 ## Tecnologie utilizzate
 - HTML5
