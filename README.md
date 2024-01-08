@@ -7,7 +7,7 @@
 ### In Forno
 E-commerce realizzato a scopo didattico per la gestione degli ordini di una pizzeria.
 
-![image]()
+![image](https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home-mobile.png)
 
 ###Funzionalità
 
