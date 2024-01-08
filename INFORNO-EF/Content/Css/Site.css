@@ -71,4 +71,14 @@ html {
     background-color: #6c2f18b0;
 }
 
+/*Carrello*/
 
+.carrello-btn{
+    width: 30vw;
+}
+
+@media (max-width: 758px){
+    .carrello-btn{
+        width: 40vh;
+    }
+}

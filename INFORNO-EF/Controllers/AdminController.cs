@@ -57,6 +57,7 @@ namespace INFORNO_EF.Controllers
             {
                 db.Entry(ordini).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["ordineEvaso"] = "L'ordine è stato salvato come 'evaso'.";
                 return View();
             }
             ViewBag.FKUtente = new SelectList(db.Utenti, "IdUtente", "Username", ordini.FKUtente);

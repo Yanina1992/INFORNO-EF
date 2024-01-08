@@ -4,77 +4,84 @@
     ViewBag.Title = "GestisciOrdiniConclusi";
 }
 
-<h2>Gestisci gli ordini conclusi</h2>
+<div class="m-2" style="min-height: 65vh">
+    <h2>Gestisci gli ordini conclusi</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Utenti.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IndirizzoSpedizione)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Note)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImportoTotale)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Concluso)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Evaso)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Utenti.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IndirizzoSpedizione)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Note)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImportoTotale)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Concluso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Evaso)
-            </td>
-            <td>
-                @Html.ActionLink("Modifica", "Edit", new { id = item.IdOrdine }) |
-                @Html.ActionLink("Dettagli", "Details", new { id = item.IdOrdine }) |
-                @Html.ActionLink("Elimina", "Delete", new { id = item.IdOrdine })
-            </td>
+            <th class="d-none d-sm-table-cell">
+                @Html.DisplayNameFor(model => model.Utenti.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th class="d-none d-md-table-cell">
+                @Html.DisplayNameFor(model => model.IndirizzoSpedizione)
+            </th>
+            <th class="d-none d-md-table-cell">
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImportoTotale)
+            </th>
+            <th class="d-none">
+                @Html.DisplayNameFor(model => model.Concluso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evaso)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="d-none d-sm-table-cell">
+                    @Html.DisplayFor(modelItem => item.Utenti.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td class="d-none d-md-table-cell">
+                    @Html.DisplayFor(modelItem => item.IndirizzoSpedizione)
+                </td>
+                <td class="d-none d-md-table-cell">
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImportoTotale)€
+                </td>
+                <td class="d-none">
+                    @Html.DisplayFor(modelItem => item.Concluso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Evaso)
+                </td>
+                <td>
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IdOrdine }) @*|*@
+                    @*@Html.ActionLink("Elimina", "Delete", new { id = item.IdOrdine })*@
+                </td>
+            </tr>
+        }
 
-<div class="d-flex justify-content-evenly">
-    <div style="width: 30vh; min-height: 28vh">
-        <button id="GetOrdini" class="btn btn-dark text-light fw-bold w-100">Totale degli ordini evasi</button>
-        <div id="OrdiniEv"></div>
+    </table>
+
+    <div class="content">
+        <div class="row justify-content-evenly">
+
+        <div class="col col-12 col-md-4 my-2">
+            <button id="GetOrdini" class="btn btn-dark text-light fw-bold w-100">Totale degli ordini evasi</button>
+            <div id="OrdiniEv"></div>
+        </div>
+
+        <div class="col col-12 col-md-4 my-2">
+            <button id="GetTotIncassato" class="btn btn-dark text-light fw-bold w-100">Totale incassato</button>
+            <div id="TotInc"></div>
+        </div>
+
+        </div>
     </div>
-    <div style="width: 30vh">
-        <button id="GetTotIncassato" class="btn btn-dark text-light fw-bold w-100">Totale incassato</button>
-        <div id="TotInc"></div>
-    </div>
+
 </div>
 
 @section Scripts {

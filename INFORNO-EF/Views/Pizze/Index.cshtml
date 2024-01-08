@@ -12,13 +12,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
-            <th>
+            <th class="d-none d-md-table-cell">
                 @Html.DisplayNameFor(model => model.Foto)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Prezzo)
             </th>
-            <th>
+            <th class="d-none d-md-table-cell">
                 @Html.DisplayNameFor(model => model.TempoConsegna)
             </th>
             <th>
@@ -33,13 +33,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
-                <td>
+                <td class="d-none d-md-table-cell">
                     @Html.DisplayFor(modelItem => item.Foto)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Prezzo)
                 </td>
-                <td>
+                <td class="d-none d-md-table-cell">
                     @Html.DisplayFor(modelItem => item.TempoConsegna)
                 </td>
                 <td>
@@ -53,9 +53,12 @@
         }
 
     </table>
-    <div class="d-flex justify-content-center">
-        <p style="width: 30vw">
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col col-12 col-md-6">
             @Html.ActionLink("Aggiungi una pizza", "Create", new { area = "" }, new { @class = "btn btn-dark fw-bold w-100" })
-        </p>
+        </div>
     </div>
 </div>

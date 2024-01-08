@@ -4,9 +4,9 @@
     ViewBag.Title = "Details";
 }
 
-<div class="m-2 text-center">
+<div class="m-2" style="min-height:60vh">
     <h2>Dettagli</h2>
-    <h4>Pizze @Model.Nome</h4>
+    <h4>@Model.Nome</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -48,17 +48,8 @@
         <dd>
             @Html.DisplayFor(model => model.Ingredienti)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantita)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantita)
-        </dd>
-
     </dl>
 </div>
-<p class="text-center">
+<p class="m-2">
     @Html.ActionLink("Torna alla lista delle pizze", "Index")
 </p>

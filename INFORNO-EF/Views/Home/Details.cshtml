@@ -6,7 +6,6 @@
 
 <div class="m-3">
     <div class="card text-bg-dark border border-0">
-        @*<h1 class="text-center text-light m-5">@Model.Nome</h1>*@
         <img src="~/Content/Immagini/@Model.Foto" class="card-img" alt="pizza" style="height: 66vh">
         <div class="card-img-overlay">
             <div class="text-center p-4 d-flex flex-column align-items-center" style="background-color: #6c2f18b0">
@@ -14,14 +13,14 @@
                 <p class="card-text"><strong>@Model.Ingredienti</strong></p>
                 <p class="card-text"><strong>@Model.Prezzo€</strong></p>
                 <p class="card-text"><strong>@Model.TempoConsegna</strong></p>
-                <div class="form-group" style="width: 30vw;">
-                    @Html.ActionLink("Aggiungi al carrello", "Create", "Dettagli", new { id = Model.IdPizza }, new { @class = "btn btn-dark text-light fw-bold w-100" })
+                <div class="form-group container">
+                    <div class="row justify-content-center">
+                        <div class="col col-12 col-md-6">
+                            @Html.ActionLink("Aggiungi al carrello", "Create", "Dettagli", new { id = Model.IdPizza }, new { @class = "btn btn-dark text-light fw-bold w-100" })
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-@*@Html.Partial("_GetQuantita")*@
-
-@*@{Html.RenderPartial("~/Views/Dettagli/_GetQuantita.cshtml");}*@

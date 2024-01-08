@@ -4,12 +4,11 @@
     ViewBag.Title = "Delete";
 }
 
-<div style="height: 75.4vh" class="p-5">
+<div style="height: 75.4vh" class="px-1 px-md-5 py-5">
     <h2 class="text-center p-4" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);">Elimina</h2>
 
-    <h3>Are you sure you want to delete this?</h3>
+    <h3>Vuoi eliminare le seguenti pizze dall'ordine?</h3>
     <div>
-        <h4>Dettagli</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -42,10 +41,13 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
+            <div class="form-actions no-color d-flex justify-content-center">
+                <input type="submit" value="Elimina" class="btn btn-danger fw-bold w-100" /><br />
             </div>
+
         }
     </div>
+</div> 
+<div class="m-2">
+    @Html.ActionLink("Torna al carrello", "Index")
 </div>

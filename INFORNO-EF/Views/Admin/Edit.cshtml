@@ -4,7 +4,11 @@
     ViewBag.Title = "Edit";
 }
 
-<div class="m-2 d-flex flex-column">
+@{
+    var ordineEvaso = TempData["ordineEvaso"];
+}
+
+<div class="m-2 d-flex flex-column" style="min-height:65vh">
     <h2>Gestione ordini</h2>
 
     @using (Html.BeginForm())
@@ -29,23 +33,26 @@
             @Html.HiddenFor(model => model.Concluso)
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Evaso, htmlAttributes: new { @class = "control-label col-md-2" })
-                @*<div class="col-md-10">*@
-                @*<div class="checkbox">*@
-                <p>(Spunta la casella per evadere se l'ordine è già stato inviato)</p>
+                @Html.LabelFor(model => model.Evaso, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })<br />
+                <span>(Spunta la casella per evadere se l'ordine è già stato inviato)</span>
                 @Html.CheckBox("Evaso")
                 @Html.ValidationMessageFor(model => model.Evaso, "", new { @class = "text-danger" })
-                @*</div>*@
-                @*</div>*@
             </div>
 
-            <div class="form-group align-self-center" style="width: 30vw">
+            <div class="form-group align-self-center d-flex justify-content-center m-4" style="width: 30vw">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Salva" class="btn btn-dark text-light fw-bold w-100" />
                 </div>
             </div>
         </div>
     }
+
+    @if(ordineEvaso != null)
+    {
+        <p class="text-success fw-bold">@ordineEvaso</p>
+    }
+
+
     @Html.ActionLink("Torna alla lista degli ordini conclusi", "GestisciOrdiniConclusi")
 </div>
 

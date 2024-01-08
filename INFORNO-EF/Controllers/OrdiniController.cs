@@ -129,11 +129,31 @@ namespace INFORNO_EF.Controllers
                 db.Entry(ordini).State = EntityState.Modified;
                 db.SaveChanges();
                 ViewBag.OrdineConcluso = "Ti ringraziamo per l'acquisto!";
+                //TempData["ordineConcluso"] = ordini.IdOrdine;
+                //GestioneCarrello();
                 return View();
             }
             ViewBag.FKUtente = new SelectList(db.Utenti, "IdUtente", "Username", ordini.FKUtente);
             return View();
         }
+
+        public ActionResult GestioneCarrello()
+        {
+            var user = User.Identity.Name;
+            var findID = db.Utenti.Where(m => m.Username == user).FirstOrDefault().IdUtente;
+            var ordine = db.Ordini.Where(m => m.FKUtente == findID).FirstOrDefault();
+
+            if (ordine != null && ordine.Concluso == true)
+            {
+                //TempData["ordineConcluso"] = "Ordine concluso";
+                return RedirectToAction("Details", new { id = ordine.IdOrdine });
+            }
+            else
+            {
+                return RedirectToAction("Index", "Dettagli");
+            }
+        }
+
         public ActionResult Delete(int? id)
         {
             if (id == null)

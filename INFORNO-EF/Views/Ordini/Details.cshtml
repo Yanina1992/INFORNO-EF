@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<div style="height: 75.4vh" class="p-5">
+<div style="height: 75.4vh" class="px-1 px-md-5 py-5">
     <h2 class="text-center p-4" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);">Riepilogo ordine</h2>
 
     <div>
@@ -69,13 +69,15 @@
         </dl>
     </div>
 
-    <div class="d-flex justify-content-evenly p-5">
-        <div style="width: 30vw">
-            @Html.ActionLink("Procedi per concludere", "Edit", new { id = Model.IdOrdine }, new { @class = "btn btn-dark text-light fw-bold w-100" })
+    @if (Model.Concluso == false || Model.Concluso == null)
+    {
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col col-12 col-md-6 p-3">
+                    @Html.ActionLink("Procedi per concludere", "Edit", new { id = Model.IdOrdine }, new { @class = "btn btn-dark text-light fw-bold w-100" })
+                </div>
+            </div>
         </div>
-    </div>
-
-    
-    
+    }
 
 </div>
