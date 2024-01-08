@@ -1,4 +1,4 @@
-<div align="center">
+  
 # Pizzeria In Forno
 
 ## E-commerce realizzato a scopo didattico per la gestione degli ordini di una pizzeria.
@@ -36,4 +36,3 @@ Lato amministratore:
 - SQL Server
 - jQuery
 
-</div>
