@@ -4,6 +4,10 @@
 
 ![image](https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home.png)
 
+<p align="center">
+  <img src="https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home.png" alt="home">
+</p>
+
 ###Funzionalità
 
 Lato user:
@@ -16,8 +20,6 @@ Lato amministratore:
 - gestione ordini ricevuti
 - gestione incassi
 - aggiunta pizze al menu
-
-![image](https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home-mobile.png)
 
 <p align="center">
   <img src="https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home-mobile.png" alt="home">
