@@ -1,8 +1,7 @@
+<div align="center">
 # Pizzeria In Forno
 
 ## E-commerce realizzato a scopo didattico per la gestione degli ordini di una pizzeria.
-
-![image](https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home.png)
 
 <p align="center">
   <img src="https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home.png" alt="home">
@@ -36,3 +35,5 @@ Lato amministratore:
 - Entity Framework
 - SQL Server
 - jQuery
+
+</div>
