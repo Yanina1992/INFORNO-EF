@@ -2,7 +2,7 @@
 
 ## E-commerce
 
-![image]()
+![image](https://github.com/Yanina1992/INFORNO-EF/blob/master/Screenshot%20home.png)
 
 ### In Forno
 E-commerce realizzato a scopo didattico per la gestione degli ordini di una pizzeria.
